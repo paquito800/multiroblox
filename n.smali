@@ -1674,27 +1674,48 @@
 .end method
 
 .method public U()V
-	.locals 2
-
-    const-string v0, "ExperienceSession"
-
-    const-string v1, "Resume game session"
+    .locals 3
 
     .line 1
-    invoke-static {v0, v1}, Lc9/k;->f(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {}, Lc7/c;->a()Lc7/e;
 
-    const/4 v0, 0x0
+    move-result-object v0
+
+    invoke-interface {v0}, Lc7/e;->z0()Z
+
+    move-result v0
+
+    const/4 v1, 0x1
+
+    const-string v2, "ExperienceSession"
+
+    if-eqz v0, :cond_0
+
+    invoke-static {}, Laa/g;->y()Laa/g;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Laa/g;->i()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    const-string v0, "Not pausing game session, user is in a call"
 
     .line 2
-    iput-boolean v0, p0, Lf7/n;->M:Z
-
-    const/4 v0, 0x1
+    invoke-static {v2, v0}, Lc9/k;->f(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 3
-    invoke-direct {p0, v0}, Lf7/n;->c0(Z)V
+    iput-boolean v1, p0, Lf7/n;->M:Z
+
+    return-void
+
+    :cond_0
+    const-string v0, "Pause game session"
 
     .line 4
-    invoke-direct {p0}, Lf7/n;->w()V
+    invoke-static {v2, v0}, Lc9/k;->f(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 5
     iget-object v0, p0, Lf7/n;->B:Lcom/roblox/client/n;
@@ -1703,7 +1724,16 @@
 
     move-result-object v0
 
-    invoke-virtual {v0}, Lp8/a;->e()V
+    invoke-virtual {v0}, Lp8/a;->d()V
+
+    .line 6
+    invoke-direct {p0, v1}, Lf7/n;->d0(Z)V
+
+    .line 7
+    invoke-direct {p0}, Lf7/n;->b0()V
+
+    .line 8
+    invoke-direct {p0}, Lf7/n;->X()V
 
     return-void
 .end method
